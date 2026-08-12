@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WebAPICursoVideo.Models;
 
 namespace WebAPICursoVideo.Data
 {
@@ -8,5 +9,8 @@ namespace WebAPICursoVideo.Data
         {
             
         }
+
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }
