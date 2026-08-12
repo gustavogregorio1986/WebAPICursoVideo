@@ -23,7 +23,7 @@ namespace WebAPICursoVideo.Services.Usuario
                 if(usuarios.Count() == 0)
                 {
                     response.Mensagem = "Nenhum usuario cadastrado.";
-                    return response;ele 
+                    return response; 
                 }
                 response.Dados = usuarios;
                 response.Mensagem = "Usuario Localizado com sucesso.";
