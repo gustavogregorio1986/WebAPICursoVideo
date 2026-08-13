@@ -7,5 +7,7 @@ namespace WebAPICursoVideo.Services.Usuario
         Task<ResponseModel<List<UsuarioModel>>> ListarUsuarios();
 
         Task<ResponseModel<UsuarioModel>> ObtenerUsuarioPorId(int id);
+
+        Task<ResponseModel<UsuarioModel>> RemoverUsuario(int id);
     }
 }

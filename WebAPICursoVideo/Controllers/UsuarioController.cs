@@ -29,5 +29,12 @@ namespace WebAPICursoVideo.Controllers
             var usuario = await _usuarioInterface.ObtenerUsuarioPorId(id);
             return Ok(usuario);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var usuario = await _usuarioInterface.RemoverUsuario(id);
+            return Ok(usuario);
+        }
     }
 }

@@ -63,5 +63,35 @@ namespace WebAPICursoVideo.Services.Usuario
                 return Task.FromResult(response);
             }
         }
+
+        public async Task<ResponseModel<UsuarioModel>> RemoverUsuario(int id)
+        {
+            ResponseModel<UsuarioModel> response = new ResponseModel<UsuarioModel>();
+
+            try
+            {
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == id);
+
+                if (usuario == null)
+                {
+                    response.Mensagem = "Usuário não encontrado.";
+                    response.Status = false;
+                    return response;
+                }
+
+                _context.Usuarios.Remove(usuario);
+                await _context.SaveChangesAsync();
+
+                response.Mensagem = $"Usuário {usuario.Nome} removido com sucesso.";
+                response.Status = true;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Mensagem = $"Erro ao remover usuário: {ex.Message}";
+                response.Status = false;
+                return response;
+            }
+        }
     }
 }
