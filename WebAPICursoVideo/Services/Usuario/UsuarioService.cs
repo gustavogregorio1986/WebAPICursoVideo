@@ -38,5 +38,30 @@ namespace WebAPICursoVideo.Services.Usuario
                 return response;
             }
         }
+
+        public Task<ResponseModel<UsuarioModel>> ObtenerUsuarioPorId(int id)
+        {
+            ResponseModel<UsuarioModel> response = new ResponseModel<UsuarioModel>();
+
+            try
+            {
+                var usuario = _context.Usuarios.FirstOrDefaultAsync(u => u.Id == id).Result;
+                if (usuario == null)
+                {
+                    response.Mensagem = "Usuário não encontrado.";
+                    return Task.FromResult(response);
+                }
+
+                response.Dados = usuario;
+                response.Mensagem = "Usuário localizado com sucesso.";
+                return Task.FromResult(response);
+            }
+            catch (Exception ex)
+            {
+                response.Mensagem = $"Erro ao obter usuário: {ex.Message}";
+                response.Status = false;
+                return Task.FromResult(response);
+            }
+        }
     }
 }
