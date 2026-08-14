@@ -19,12 +19,6 @@ namespace WebAPICursoVideo.Dto
         public string Token { get; set; } = string.Empty;
 
 
-        [Required(ErrorMessage = "Digite o Data da Criação")]
-        public DateTime DataCriacao { get; set; }
-
-        [Required(ErrorMessage = "Digite o Data da Edição")]
-        public DateTime DataAlteracao { get; set; }
-
         [Required(ErrorMessage = "Digite a Senha")]
         public string Senha { get; set; }
 

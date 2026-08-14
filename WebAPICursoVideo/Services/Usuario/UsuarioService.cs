@@ -123,6 +123,8 @@ namespace WebAPICursoVideo.Services.Usuario
                 UsuarioModel usuario = _mapper.Map<UsuarioModel>(usuarioCriacaoDto);
                 usuario.SenhaHash = senhaHash;
                 usuario.SenhaSalt = senhaSalt;
+                usuario.DataCriacao = DateTime.Now;
+                usuario.DataAlteracao = DateTime.Now;
 
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
