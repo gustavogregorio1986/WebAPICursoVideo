@@ -9,6 +9,7 @@ namespace WebAPICursoVideo.Profiles
         public ProfileAutoMapper()
         {
             CreateMap<UsuarioCriacaoDto, UsuarioModel>().ReverseMap();
+            CreateMap<UsuarioEdicaoDto, UsuarioModel>().ReverseMap();
         }
     }
 }

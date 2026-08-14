@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using WebAPICursoVideo.Data;
+using WebAPICursoVideo.Profiles;
 using WebAPICursoVideo.Services.Senha;
 using WebAPICursoVideo.Services.Usuario;
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
 builder.Services.AddScoped<ISenhaInterface, SenhaService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddAutoMapper(typeof(ProfileAutoMapper));
+
 
 
 var app = builder.Build();

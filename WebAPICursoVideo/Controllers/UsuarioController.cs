@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebAPICursoVideo.Dto;
 using WebAPICursoVideo.Models;
 using WebAPICursoVideo.Services.Usuario;
 
@@ -24,9 +25,16 @@ namespace WebAPICursoVideo.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult> ObtenerUsuarioPorId(int id)
+        public async Task<ActionResult> ObterUsuarioPorId(int id)
         {
             var usuario = await _usuarioInterface.ObterUsuarioPorId(id);
+            return Ok(usuario);
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> EditarUsuario(UsuarioEdicaoDto usuarioEdicaoDto)
+        {
+            var usuario = await _usuarioInterface.EditarUsuario(usuarioEdicaoDto);
             return Ok(usuario);
         }
 
@@ -36,5 +44,7 @@ namespace WebAPICursoVideo.Controllers
             var usuario = await _usuarioInterface.RemoverUsuario(id);
             return Ok(usuario);
         }
+
+
     }
 }

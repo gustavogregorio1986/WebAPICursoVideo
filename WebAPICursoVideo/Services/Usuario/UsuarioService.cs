@@ -20,6 +20,40 @@ namespace WebAPICursoVideo.Services.Usuario
             _mapper = mapper;
         }
 
+        public async Task<ResponseModel<UsuarioModel>> EditarUsuario(UsuarioEdicaoDto usuarioEdicaoDto)
+        {
+            ResponseModel<UsuarioModel> response = new ResponseModel<UsuarioModel>();
+
+            try
+            {
+                var usuarioBanco = await _context.Usuarios
+                         .FirstOrDefaultAsync(u => u.Id == usuarioEdicaoDto.Id);
+
+
+                if (usuarioBanco == null)
+                {
+                    response.Mensagem = "Usuário não encontrado.";
+                    return response;
+                }
+
+                _mapper.Map(usuarioEdicaoDto, usuarioBanco);
+
+                _context.Update(usuarioBanco);
+                await _context.SaveChangesAsync();
+
+                response.Status = true;
+                response.Mensagem = "Usuário editado com sucesso.";
+                response.Dados = usuarioBanco;
+            }
+            catch (Exception ex)
+            {
+                response.Mensagem = ex.Message;
+            }
+
+            return response;
+        }
+
+
         public async Task<ResponseModel<List<UsuarioModel>>> ListarUsuarios()
         {
             ResponseModel<List<UsuarioModel>> response = new ResponseModel<List<UsuarioModel>>();

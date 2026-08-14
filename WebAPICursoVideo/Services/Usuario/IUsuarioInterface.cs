@@ -12,5 +12,6 @@ namespace WebAPICursoVideo.Services.Usuario
         Task<ResponseModel<UsuarioModel>> RemoverUsuario(int id);
 
         Task<ResponseModel<UsuarioModel>> RegistrarUsuario(UsuarioCriacaoDto usuarioCriacaoDto);
+        Task<ResponseModel<UsuarioModel>> EditarUsuario(UsuarioEdicaoDto usuarioEdicaoDto);
     }
 }

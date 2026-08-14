@@ -4,6 +4,7 @@ namespace WebAPICursoVideo.Dto
 {
     public class UsuarioEdicaoDto
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "Digite o Usuario")]
         public string Usuario { get; set; }
 
