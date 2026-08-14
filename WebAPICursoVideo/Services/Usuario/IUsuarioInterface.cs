@@ -1,4 +1,5 @@
-﻿using WebAPICursoVideo.Models;
+﻿using WebAPICursoVideo.Dto;
+using WebAPICursoVideo.Models;
 
 namespace WebAPICursoVideo.Services.Usuario
 {
@@ -6,8 +7,10 @@ namespace WebAPICursoVideo.Services.Usuario
     {
         Task<ResponseModel<List<UsuarioModel>>> ListarUsuarios();
 
-        Task<ResponseModel<UsuarioModel>> ObtenerUsuarioPorId(int id);
+        Task<ResponseModel<UsuarioModel>> ObterUsuarioPorId(int id);
 
         Task<ResponseModel<UsuarioModel>> RemoverUsuario(int id);
+
+        Task<ResponseModel<UsuarioModel>> RegistrarUsuario(UsuarioCriacaoDto usuarioCriacaoDto);
     }
 }

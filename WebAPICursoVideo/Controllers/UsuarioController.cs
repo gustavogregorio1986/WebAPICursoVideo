@@ -26,7 +26,7 @@ namespace WebAPICursoVideo.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> ObtenerUsuarioPorId(int id)
         {
-            var usuario = await _usuarioInterface.ObtenerUsuarioPorId(id);
+            var usuario = await _usuarioInterface.ObterUsuarioPorId(id);
             return Ok(usuario);
         }
 

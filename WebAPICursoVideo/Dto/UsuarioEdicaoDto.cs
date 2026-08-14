@@ -4,7 +4,6 @@ namespace WebAPICursoVideo.Dto
 {
     public class UsuarioEdicaoDto
     {
-        public int Id { get; set; }
         [Required(ErrorMessage = "Digite o Usuario")]
         public string Usuario { get; set; }
 
@@ -24,10 +23,10 @@ namespace WebAPICursoVideo.Dto
         public DateTime DataAlteracao { get; set; }
 
         [Required(ErrorMessage = "Digite a Senha")]
-        public string SenhaHash { get; set; }
+        public string Senha { get; set; }
 
         [Required(ErrorMessage = "Digite a confirmação da Senha"),
-            Compare("SenhaHash", ErrorMessage = "As senhas não coincidem.")]
-        public string SenhaSalt { get; set; }
+            Compare("Senha", ErrorMessage = "As senhas não coincidem.")]
+        public string ConfirmarSenha { get; set; }
     }
 }
