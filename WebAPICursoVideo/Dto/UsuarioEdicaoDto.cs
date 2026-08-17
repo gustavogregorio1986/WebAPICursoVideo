@@ -16,18 +16,5 @@ namespace WebAPICursoVideo.Dto
 
         [Required(ErrorMessage = "Digite o Email")]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Digite o Data da Criação")]
-        public DateTime DataCriacao { get; set; }
-
-        [Required(ErrorMessage = "Digite o Data da Edição")]
-        public DateTime DataAlteracao { get; set; }
-
-        [Required(ErrorMessage = "Digite a Senha")]
-        public string Senha { get; set; }
-
-        [Required(ErrorMessage = "Digite a confirmação da Senha"),
-            Compare("Senha", ErrorMessage = "As senhas não coincidem.")]
-        public string ConfirmarSenha { get; set; }
     }
 }

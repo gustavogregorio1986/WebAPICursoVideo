@@ -80,6 +80,42 @@ namespace WebAPICursoVideo.Services.Usuario
             }
         }
 
+        public async Task<ResponseModel<UsuarioModel>> Login(UsuarioLoginDto usuarioLoginDto)
+        {
+            ResponseModel<UsuarioModel> response = new ResponseModel<UsuarioModel>();
+
+            try
+            {
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == usuarioLoginDto.Email);
+
+                if (usuario == null)
+                {
+                    response.Mensagem = "Credenciais invalidas!";
+                    response.Status = false;
+                    return response;
+                }
+
+                if (!_senhaInterface.VerificarSenhaHash(usuarioLoginDto.Senha, usuario.SenhaHash, usuario.SenhaSalt))
+                {
+                    response.Mensagem = "Email ou senha incorretos.";
+                    response.Status = false;
+                    return response;
+                }
+
+                response.Status = true;
+                response.Mensagem = "Login realizado com sucesso.";
+                response.Dados = usuario;
+            }
+            catch (Exception ex)
+            {
+                response.Mensagem = ex.Message;
+                response.Status = false;
+                return response;
+            }
+
+            return response;
+        }
+
         public Task<ResponseModel<UsuarioModel>> ObterUsuarioPorId(int id)
         {
             ResponseModel<UsuarioModel> response = new ResponseModel<UsuarioModel>();
